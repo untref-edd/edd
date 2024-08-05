@@ -1,1 +1,43 @@
 # Clases
+- Clase 1: Python
+  - Presentación de la materia
+  - Herramientas para la cursada
+  - Presentación de Python
+- Clase 2: Python
+  - Tipos de Datos
+  - Estructuras de control
+  - Visibilidad de variables
+  - Funcione
+  - POO.
+  - Introspección.
+- Clase 3: Python:
+  - Manejo de Excepciones.
+  - Archivos
+  - Persistencia: pickle, shelve, JSON.
+- Clase 4: Estructuras de Datos Avanzadas
+  - Organización de archivos.
+  - Registros con Campos de longitud fija
+  - Registros con Campos de longitud variable
+  - Archivos CSV
+- Clase 5: Estructuras de Datos Avanzadas: Grafos
+  - Definiciones
+  - Orden Topológico
+- Clase 6: Estructuras de Datos Avanzadas: Grafos
+  - Camino Mínimo en Grafos Dirigidos
+  - Algoritmo de Dijkstra
+  - Algoritmo de Bellman-Ford
+- Clase 7: Estructuras de Datos Avanzadas: Grafos
+  - Recorridos a la Ancho y en Profundidad
+  - Aplicaciones 
+- Clase 8: Recuperación de la Información: Semiestructurada
+  -  XML
+  -  XPath
+- Clase 9: Recuperación de la Información: Internet
+  - Web Crawling
+  - Redes Sociales
+  - API's 
+- Clase 10: Recuperación de la Información: Índices Invertidos
+  - Recuperación Booleana
+  - Construcción de Índices Invertidos
+- Clase 11: Recuperación estructurada: Semiestructurada
+  - Expresiones Regulares
