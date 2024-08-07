@@ -7,7 +7,7 @@
   - Tipos de Datos
   - Estructuras de control
   - Visibilidad de variables
-  - Funcione
+  - Funciones
   - POO.
   - Introspección.
 - Clase 3: Python:
