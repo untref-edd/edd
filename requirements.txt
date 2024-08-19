@@ -8,3 +8,4 @@ jupyterlab_rise
 matplotlib
 networkx
 pygraphviz
+scipy
