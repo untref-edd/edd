@@ -1,7 +1,7 @@
 :root {
-  --jp-code-font-size: 1.75rem;
+  --jp-code-font-size: 1.60rem;
 }
 
 .rise-enabled .jp-RenderedHTMLCommon table {
-  font-size: 1.75rem;
+  font-size: 1.60rem;
 }
