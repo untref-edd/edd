@@ -7,9 +7,10 @@ help:
 ## install: install all required dependencies
 .PHONY: install
 install:
-	pip install --requirement=requirements.txt
+	pip install --requirement requirements.txt
+	pip install --editable ./code
 
 ## fmt: format Python and Jupyter files
 .PHONY: fmt
 fmt:
-	black .
+	black --line-length 120 .
