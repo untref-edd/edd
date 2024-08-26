@@ -13,4 +13,4 @@ install:
 ## fmt: format Python and Jupyter files
 .PHONY: fmt
 fmt:
-	black .
+	black --line-length 120 .

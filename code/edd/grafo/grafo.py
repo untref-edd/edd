@@ -87,9 +87,7 @@ class Grafo:
     def ponderado(self) -> bool:
         return self._ponderado
 
-    def agregar_arista(
-        self, origen: str, destino: str, peso: int | float = None
-    ) -> None:
+    def agregar_arista(self, origen: str, destino: str, peso: int | float = None) -> None:
         vertice_origen = Vertice(origen)
         vertice_destino = Vertice(destino)
 
@@ -104,9 +102,7 @@ class Grafo:
         if peso is not None:
             self._ponderado = True
 
-    def _agregar_arista(
-        self, vertice_origen: str, vertice_destino: str, peso: int | float = None
-    ) -> None:
+    def _agregar_arista(self, vertice_origen: str, vertice_destino: str, peso: int | float = None) -> None:
         arista = Arista(vertice_destino, peso)
         arista = self._aristas.setdefault(arista, arista)
         vertice_origen.agregar_arista(arista)
@@ -140,9 +136,7 @@ class Grafo:
 
         return out
 
-    def draw(
-        self, highlight_edges=None, highlight_nodes=None, output_file=None
-    ) -> None:
+    def draw(self, highlight_edges=None, highlight_nodes=None, output_file=None) -> None:
         import importlib.util
 
         if importlib.util.find_spec("matplotlib") is None:
