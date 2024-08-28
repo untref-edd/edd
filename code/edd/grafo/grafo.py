@@ -127,7 +127,7 @@ class Grafo:
     def __str__(self) -> str:
         out = f"Vertices: {self.vertices}\n\n"
         arrow_head = ">" if self._dirigido else ""
-        for vertice in self._vertices:
+        for vertice in self.vertices:
             for arista in vertice.aristas:
                 if arista.peso is not None:
                     out += f"\t{vertice.id} --{arista.peso}--{arrow_head} {arista.destino}\n"
@@ -136,7 +136,7 @@ class Grafo:
 
         return out
 
-    def draw(self, highlight_edges=None, highlight_nodes=None, output_file=None) -> None:
+    def draw(self, highlight_edges=None, highlight_nodes=None, output_file=None, pos=None, curved_edges=False) -> None:
         import importlib.util
 
         if importlib.util.find_spec("matplotlib") is None:
@@ -148,8 +148,7 @@ class Grafo:
         import matplotlib.pyplot as plt
         import networkx as nx
 
-        pos = nx.nx_agraph.graphviz_layout(G)
-        # pos = nx.spring_layout(G)
+        pos = pos or nx.nx_agraph.graphviz_layout(G)
 
         network_options = {
             "pos": pos,
@@ -157,6 +156,7 @@ class Grafo:
             "font_color": "w",
             "font_family": "monospace",
             "node_size": 1000,
+            "connectionstyle": "arc3, rad=-0.7" if curved_edges else "arc3",
         }
 
         if G.is_directed():
