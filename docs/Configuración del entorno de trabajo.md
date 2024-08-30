@@ -4,11 +4,11 @@
 
 <h3 style="text-align: center">Estructuras de Datos</h3>
 
-<h2 style="text-align: center">Entorno de trabajo: Setup</h3>
+<h2 style="text-align: center">Configuración del entorno de trabajo</h3>
 
 ### Python
 
-Instalar el intérprete de Python desde: https://www.python.org
+Instalar el intérprete de Python desde: <https://www.python.org>
 
 En Windows, seguir el siguiente paso a paso: [Instalación de Python en Windows](https://docs.google.com/presentation/d/e/2PACX-1vQiVJDxx3hmVxbisIlkxYQstgI-SlN3bKamBId0GmNJ2g9m6d8UryGeQFZqt-WwZp0pPEatTR9nUMgD/pub)
 
@@ -43,4 +43,3 @@ Un administrador de entornos virtuales que permite instalar diferentes versiones
 ```shell
 pip install jupyterlab
 ```
-
