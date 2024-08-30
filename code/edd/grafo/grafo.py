@@ -148,7 +148,10 @@ class Grafo:
         import matplotlib.pyplot as plt
         import networkx as nx
 
-        pos = pos or nx.nx_agraph.graphviz_layout(G)
+        if importlib.util.find_spec("pygraphviz"):
+            pos = pos or nx.nx_agraph.graphviz_layout(G)
+        else:
+            pos = pos or nx.circular_layout(G)
 
         network_options = {
             "pos": pos,

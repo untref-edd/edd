@@ -23,13 +23,19 @@ pip install --upgrade --editable "git+https://github.com/untref-edd/edd.git#egg=
 ### Clonando este mismo repositorio (_recomendado_)
 
 ```sh
-git clone ${GIT_URL}
+git clone https://github.com/untref-edd/edd.git
 cd edd
 pip install --editable ./code
 ```
 
 Para actualizar en este caso, solo debemos hacer `git-pull` de los últimos
 cambios en el repositorio.
+
+### [Opcional] Soporte para graficos en Jupyter con `graphviz`
+
+Es necesario instalar el paquete `pygraphviz` para obtener mejores gráficos.
+
+[Guía de instalación oficial de PyGraphviz (en)](https://pygraphviz.github.io/documentation/stable/install.html)
 
 ### ¿Cómo usar el módulo `edd`?
 
