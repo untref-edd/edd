@@ -14,3 +14,4 @@ install:
 .PHONY: fmt
 fmt:
 	black --line-length 120 .
+	find . -name "*.ipynb" -not -path "*.ipynb_checkpoints*" -exec jupyter nbconvert --ClearOutputPreprocessor.enabled=True --inplace {} ';'
