@@ -6,4 +6,23 @@
 
 <h3 style="text-align: center">Estructura de Datos </h3>
 
-Repositorio público, con clases, notas y materiales para cursar la materia
+Repositorio público, con clases, notas y materiales para cursar la materia.
+
+# Contenido
+
+## `Clases`
+
+Repositorio de notebooks de Jupyter con el material presentado en las clases.
+
+## `code`
+
+Corresponde a un paquete Python creado para distribuir el código que la catedrá
+provee a los estudiantes.
+
+Ver [README.md](./code/README.md) del paquete para conocer más sobre como
+instalarlo y usarlo.
+
+## `docs`
+
+Documentos varios sobre requerimientos y solución de problemas en este
+repositorio.
