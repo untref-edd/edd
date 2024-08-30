@@ -107,6 +107,18 @@ class Grafo:
         arista = self._aristas.setdefault(arista, arista)
         vertice_origen.agregar_arista(arista)
 
+    def __str__(self) -> str:
+        out = f"Vertices: {self.vertices}\n\n"
+        arrow_head = ">" if self._dirigido else ""
+        for vertice in self.vertices:
+            for arista in vertice.aristas:
+                if arista.peso is not None:
+                    out += f"\t{vertice.id} --{arista.peso}--{arrow_head} {arista.destino}\n"
+                else:
+                    out += f"\t{vertice.id} --{arrow_head} {arista.destino}\n"
+
+        return out
+
     def to_networkx(self):
         import importlib.util
 
@@ -123,18 +135,6 @@ class Grafo:
                 G.add_edge(vertice_origen.id, arista.destino.id, weight=arista.peso)
 
         return G
-
-    def __str__(self) -> str:
-        out = f"Vertices: {self.vertices}\n\n"
-        arrow_head = ">" if self._dirigido else ""
-        for vertice in self.vertices:
-            for arista in vertice.aristas:
-                if arista.peso is not None:
-                    out += f"\t{vertice.id} --{arista.peso}--{arrow_head} {arista.destino}\n"
-                else:
-                    out += f"\t{vertice.id} --{arrow_head} {arista.destino}\n"
-
-        return out
 
     def draw(self, highlight_edges=None, highlight_nodes=None, output_file=None, pos=None, curved_edges=False) -> None:
         import importlib.util
