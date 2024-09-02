@@ -10,6 +10,8 @@ python = "^3.9"
 matplotlib = "*"
 networkx = "*"
 
+[tool.poetry.scripts]
+test = "scripts:test"
 
 [build-system]
 requires = ["poetry-core"]
