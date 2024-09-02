@@ -1,0 +1,14 @@
+:root {
+  --jp-code-font-size: 1.25rem;
+}
+
+.rise-enabled .jp-RenderedHTMLCommon p,
+.rise-enabled .jp-RenderedHTMLCommon li {
+  font-size: 1.75rem;
+}
+
+.rise-enabled .jp-InputArea pre,
+.rise-enabled .jp-OutputArea pre,
+.rise-enabled .jp-RenderedHTMLCommon table {
+  font-size: 1.2rem;
+}
