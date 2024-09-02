@@ -1,5 +1,6 @@
-# -*- coding: utf-8 -*-
 from __future__ import annotations
+
+from importlib.util import find_spec
 
 
 class Vertice:
@@ -28,7 +29,7 @@ class Vertice:
         arista = self._aristas.setdefault(arista, arista)
         arista.destino._grado_entrada += 1
 
-    def __eq__(self, other: object) -> bool:
+    def __eq__(self, other: Vertice) -> bool:
         if not isinstance(other, Vertice):
             return False
 
@@ -38,13 +39,28 @@ class Vertice:
         return hash((self._id,))
 
     def __repr__(self) -> str:
-        return f"{self._id}"
+        return f"Vertice({repr(self._id)})"
+
+    def __lt__(self, other: Vertice) -> bool:
+        """
+        Se implementa para poder comparar vértices en un heap.
+        """
+        return False
 
 
 class Arista:
-    def __init__(self, destino: Vertice, peso: int | float = None) -> None:
+    def __init__(self, origen: Vertice, destino: Vertice, peso: int | float = None) -> None:
+        self._origen = origen
         self._destino = destino
         self._peso = peso
+
+    @property
+    def vertices(self) -> Vertice:
+        return (self._origen, self._destino)
+
+    @property
+    def origen(self) -> Vertice:
+        return self._origen
 
     @property
     def destino(self) -> Vertice:
@@ -54,18 +70,20 @@ class Arista:
     def peso(self) -> int | float | None:
         return self._peso
 
+    def __contains__(self, vertice: Vertice) -> bool:
+        return vertice in self.vertices
+
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, Arista):
             return False
 
-        return self._destino == other._destino and self._peso == other._peso
+        return (self._origen, self._destino, self._peso) == (other._origen, other._destino, other._peso)
 
     def __hash__(self):
-        return hash((self._destino, self._peso))
+        return hash((self._origen, self._destino, self._peso))
 
     def __repr__(self) -> str:
-
-        return f"{self.destino}({self.peso})"
+        return f"Arista({repr(self.destino)}, {repr(self.destino)}, {repr(self.peso)})"
 
 
 class Grafo:
@@ -78,6 +96,10 @@ class Grafo:
     @property
     def vertices(self) -> set[Vertice]:
         return set(self._vertices.values())
+
+    @property
+    def aristas(self) -> set[Arista]:
+        return set(self._aristas.values())
 
     @property
     def dirigido(self) -> bool:
@@ -94,35 +116,36 @@ class Grafo:
         vertice_origen = self._vertices.setdefault(vertice_origen, vertice_origen)
         vertice_destino = self._vertices.setdefault(vertice_destino, vertice_destino)
 
-        self._agregar_arista(vertice_origen, vertice_destino, peso)
+        self.__agregar_arista(vertice_origen, vertice_destino, peso)
 
         if not self._dirigido:
-            self._agregar_arista(vertice_destino, vertice_origen, peso)
+            self.__agregar_arista(vertice_destino, vertice_origen, peso)
 
         if peso is not None:
             self._ponderado = True
 
-    def _agregar_arista(self, vertice_origen: str, vertice_destino: str, peso: int | float = None) -> None:
-        arista = Arista(vertice_destino, peso)
+    def __agregar_arista(self, vertice_origen: str, vertice_destino: str, peso: int | float = None) -> None:
+        arista = Arista(vertice_origen, vertice_destino, peso)
         arista = self._aristas.setdefault(arista, arista)
         vertice_origen.agregar_arista(arista)
 
+    def __getitem__(self, id: str) -> Vertice:
+        return self._vertices.get(Vertice(id))
+
     def __str__(self) -> str:
-        out = f"Vertices: {self.vertices}\n\n"
+        out = f"Vertices: { {v.id for v in self.vertices} }\n\n"
         arrow_head = ">" if self._dirigido else ""
         for vertice in self.vertices:
             for arista in vertice.aristas:
                 if arista.peso is not None:
-                    out += f"\t{vertice.id} --{arista.peso}--{arrow_head} {arista.destino}\n"
+                    out += f"\t{vertice.id} --{arista.peso}--{arrow_head} {arista.destino.id}\n"
                 else:
-                    out += f"\t{vertice.id} --{arrow_head} {arista.destino}\n"
+                    out += f"\t{vertice.id} --{arrow_head} {arista.destino.id}\n"
 
         return out
 
     def to_networkx(self):
-        import importlib.util
-
-        if importlib.util.find_spec("networkx") is None:
+        if find_spec("networkx") is None:
             print("networkx no instalado")
             return None
 
@@ -136,10 +159,17 @@ class Grafo:
 
         return G
 
-    def draw(self, highlight_edges=None, highlight_nodes=None, output_file=None, pos=None, curved_edges=False) -> None:
+    def draw(
+        self,
+        highlight_edges=None,
+        highlight_nodes=None,
+        output_file=None,
+        pos=None,
+        curved_edges=False,
+    ) -> None:
         import importlib.util
 
-        if importlib.util.find_spec("matplotlib") is None:
+        if find_spec("matplotlib") is None:
             print("matplotlib no instalado")
             return None
 
@@ -148,7 +178,7 @@ class Grafo:
         import matplotlib.pyplot as plt
         import networkx as nx
 
-        if importlib.util.find_spec("pygraphviz"):
+        if find_spec("pygraphviz"):
             pos = pos or nx.nx_agraph.graphviz_layout(G)
         else:
             pos = pos or nx.circular_layout(G)
