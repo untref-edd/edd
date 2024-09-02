@@ -1,0 +1,50 @@
+codigo,nombre,correlativas,cuatrimestre,año
+1,Sistemas de Representación,,1,1
+2,Algoritmos y Programación I,,1,1
+3,Análisis Matemático I,,1,1
+4,Algebra I,,1,1
+5,Introducción a la Problemática del Mundo Contemporáneo,,1,1
+6,Algoritmos y Programación II,2,2,1
+7,Física I,3,2,1
+8,Algebra II,4,2,1
+9,Problemas de Historia del Siglo XX,,2,1
+10,Estructura de Datos,6,3,2
+11,Diseño Lógico,1 4,3,2
+12,Análisis Matemático II,3 8,3,2
+13,Matermática Discreta,8,3,2
+14,"Cuestiones de Sociología, Economía y Política",,3,2
+15,Algoritmos y Programación III,10,4,2
+16,Arquitecturas de Computadoras I,11,4,2
+17,Física II,7 12,4,2
+18,Matemáticas Especiales,12,4,2
+19,Cultura Contemporánea,,4,2
+20,Sistemas Operativos,16 5 9 14 19,5,3
+21,Fundamentos de Computación,10 13 5 9 14 19,5,3
+22,Física III,17 5 9 14 19,5,3
+23,Probabilidad y Estadística,12 5 9 14 19,5,3
+24,Laboratorio de Microprocesadores,15 16 5 9 14 19,6,3
+25,Teoría de Círcuitos Electrónicos,17 18 5 9 14 19,6,3
+26,Arquitectura de Computadoras II,16 17 5 9 14 19,6,3
+27,Comunicación de Datos,17 20 23,6,3
+47,Inglés Básico,,,
+48,Inglés Técnico,47,,
+28,Diseño y Arquitectura de Sistemas de Computación,20 21 24 26 47 48,7,4
+29,Electrónica,22 25 47 48,7,4
+30,Base de Datos,10 23 47 48,7,4
+31,Redes de Computadoras,27 47 48,7,4
+32,Construcción de Sistemas de Computación,28,8,4
+33,Ingeniería de Calidad,28,8,4
+34,Procesamiento de Señales,18 23 24 47 48,8,4
+35,Análisis Numérico,18 5 9 14 19 47 48,8,4
+36,Química,7 5 9 14 19 47 48,8,4
+37,Organización de Proyectos,21 22 24 25 26 27 47 48,9,5
+38,Ingeniería de Software,33,9,5
+39,Ingeniería de Requerimientos,33,9,5
+40,Sistemas Embebidos,28 29,9,5
+41,Sistemas de Tiempo Real,28 29,9,5
+42,Trabajo Final Integrador,29 30 31 32 33 34 35 36 37,10,5
+43,Práctica Profesional Supervisada,29 30 31 32 33 34 35 36,10,5
+44,Economía y Legislación,21 22 24 25 26 27 47 48,10,5
+45,"Seguridad, Salud Ocupacional y Medio Ambiente",21 22 24 25 26 27 47 48,10,5
+46,Metodología de la Investigación,21 22 24 25 26 27 47 48,,
+99,Título,38 39 40 41 42 43 44 45 46,,
