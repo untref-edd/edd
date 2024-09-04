@@ -6,6 +6,7 @@ jupyterlab >= 4.2.4
 jupyterlab_code_formatter
 jupyterlab_rise
 matplotlib
+mypy
 networkx
 pygraphviz
 scipy

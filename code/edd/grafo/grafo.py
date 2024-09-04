@@ -29,7 +29,7 @@ class Vertice:
         arista = self._aristas.setdefault(arista, arista)
         arista.destino._grado_entrada += 1
 
-    def __eq__(self, other: Vertice) -> bool:
+    def __eq__(self, other: object) -> bool:
         if not isinstance(other, Vertice):
             return False
 
@@ -49,13 +49,13 @@ class Vertice:
 
 
 class Arista:
-    def __init__(self, origen: Vertice, destino: Vertice, peso: int | float = None) -> None:
+    def __init__(self, origen: Vertice, destino: Vertice, peso: int | float | None = None) -> None:
         self._origen = origen
         self._destino = destino
         self._peso = peso
 
     @property
-    def vertices(self) -> Vertice:
+    def vertices(self) -> tuple[Vertice, Vertice]:
         return (self._origen, self._destino)
 
     @property
@@ -87,7 +87,7 @@ class Arista:
 
 
 class Grafo:
-    def __init__(self):
+    def __init__(self) -> None:
         self._vertices: dict[Vertice, Vertice] = {}
         self._aristas: dict[Arista, Arista] = {}
         self._dirigido: bool = False
@@ -109,7 +109,7 @@ class Grafo:
     def ponderado(self) -> bool:
         return self._ponderado
 
-    def agregar_arista(self, origen: str, destino: str, peso: int | float = None) -> None:
+    def agregar_arista(self, origen: str, destino: str, peso: int | float | None = None) -> None:
         vertice_origen = Vertice(origen)
         vertice_destino = Vertice(destino)
 
@@ -124,12 +124,12 @@ class Grafo:
         if peso is not None:
             self._ponderado = True
 
-    def __agregar_arista(self, vertice_origen: str, vertice_destino: str, peso: int | float = None) -> None:
-        arista = Arista(vertice_origen, vertice_destino, peso)
+    def __agregar_arista(self, origen: Vertice, destino: Vertice, peso: int | float | None = None) -> None:
+        arista = Arista(origen, destino, peso)
         arista = self._aristas.setdefault(arista, arista)
-        vertice_origen.agregar_arista(arista)
+        origen.agregar_arista(arista)
 
-    def __getitem__(self, id: str) -> Vertice:
+    def __getitem__(self, id: str) -> Vertice | None:
         return self._vertices.get(Vertice(id))
 
     def __str__(self) -> str:
@@ -149,7 +149,7 @@ class Grafo:
             print("networkx no instalado")
             return None
 
-        import networkx as nx
+        import networkx as nx  # type: ignore
 
         G = nx.DiGraph() if self._dirigido else nx.Graph()
 

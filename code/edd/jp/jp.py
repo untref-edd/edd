@@ -1,6 +1,6 @@
 from base64 import b64encode
 
-import networkx as nx
+import networkx as nx  # type: ignore
 from IPython.display import HTML, display
 
 
