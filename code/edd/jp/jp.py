@@ -36,12 +36,12 @@ def render_python_tutor(code: str) -> None:
     fragment = {
         "code": code.strip(),
         "codeDivHeight": "400",
-        "codeDivWidth": "350",
+        "codeDivWidth": "500",
         "cumulative": "false",
         "curInstr": "0",
         "heapPrimitives": "nevernest",
         "origin": "opt-rontend.js",
-        "py": "3",
+        "py": "311",
         "rawInputLstJSON": "[]",
         "textReferences": "false",
     }
