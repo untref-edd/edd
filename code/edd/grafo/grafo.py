@@ -163,6 +163,7 @@ class Grafo:
         self,
         highlight_edges=None,
         highlight_nodes=None,
+        node_labels=None,
         output_file=None,
         pos=None,
         curved_edges=False,
@@ -222,6 +223,23 @@ class Grafo:
                 "rotate": False,
             }
             nx.draw_networkx_edge_labels(G, **edge_labels_options)
+
+        if node_labels:
+            node_labels_options = {
+                "pos": {v: (x + 0.12, y + 0.12) for v, (x, y) in pos.items()},
+                "labels": node_labels,
+                "font_size": 14,
+                "font_family": "monospace",
+                "font_weight": "bold",
+                "font_color": "tab:green",
+                "bbox": {
+                    "boxstyle": "circle,pad=0.3",
+                    "facecolor": "w",
+                    "edgecolor": "none",
+                    "alpha": 0.75,
+                },
+            }
+            nx.draw_networkx_labels(G, **node_labels_options)
 
         plt.axis("off")
         plt.tight_layout()
