@@ -12,3 +12,7 @@
 .rise-enabled .jp-RenderedHTMLCommon table {
   font-size: 1.2rem;
 }
+
+.reveal pre code {
+  max-height: unset;
+}
