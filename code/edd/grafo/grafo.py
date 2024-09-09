@@ -6,7 +6,7 @@ from importlib.util import find_spec
 class Vertice:
     def __init__(self, _id: str) -> None:
         self._id = _id
-        self._aristas: dict[Arista, Arista] = {}
+        self._aristas: set[Arista] = set()
         self._grado_entrada = 0
 
     @property
@@ -15,7 +15,7 @@ class Vertice:
 
     @property
     def aristas(self) -> set[Arista]:
-        return set(self._aristas.values())
+        return set(self._aristas)
 
     @property
     def grado_entrada(self) -> int:
@@ -26,8 +26,9 @@ class Vertice:
         return {arista.destino for arista in self.aristas}
 
     def agregar_arista(self, arista: Arista) -> None:
-        arista = self._aristas.setdefault(arista, arista)
-        arista.destino._grado_entrada += 1
+        if arista not in self._aristas:
+            self._aristas.add(arista)
+            arista.destino._grado_entrada += 1
 
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, Vertice):
@@ -88,8 +89,8 @@ class Arista:
 
 class Grafo:
     def __init__(self) -> None:
-        self._vertices: dict[Vertice, Vertice] = {}
-        self._aristas: dict[Arista, Arista] = {}
+        self._vertices: dict[str, Vertice] = {}
+        self._aristas: set[Arista] = set()
         self._dirigido: bool = False
         self._ponderado: bool = False
 
@@ -99,7 +100,7 @@ class Grafo:
 
     @property
     def aristas(self) -> set[Arista]:
-        return set(self._aristas.values())
+        return set(self._aristas)
 
     @property
     def dirigido(self) -> bool:
@@ -109,12 +110,12 @@ class Grafo:
     def ponderado(self) -> bool:
         return self._ponderado
 
-    def agregar_arista(self, origen: str, destino: str, peso: int | float | None = None) -> None:
-        vertice_origen = Vertice(origen)
-        vertice_destino = Vertice(destino)
+    def adyacentes(self, vertice: str) -> set[Vertice]:
+        return self._vertices[vertice].adyacentes
 
-        vertice_origen = self._vertices.setdefault(vertice_origen, vertice_origen)
-        vertice_destino = self._vertices.setdefault(vertice_destino, vertice_destino)
+    def agregar_arista(self, origen: str, destino: str, peso: int | float | None = None) -> None:
+        vertice_origen = self._vertices.setdefault(origen, Vertice(origen))
+        vertice_destino = self._vertices.setdefault(destino, Vertice(destino))
 
         self.__agregar_arista(vertice_origen, vertice_destino, peso)
 
@@ -126,21 +127,21 @@ class Grafo:
 
     def __agregar_arista(self, origen: Vertice, destino: Vertice, peso: int | float | None = None) -> None:
         arista = Arista(origen, destino, peso)
-        arista = self._aristas.setdefault(arista, arista)
-        origen.agregar_arista(arista)
+        if arista not in self._aristas:
+            self._aristas.add(arista)
+            origen.agregar_arista(arista)
 
     def __getitem__(self, id: str) -> Vertice | None:
-        return self._vertices.get(Vertice(id))
+        return self._vertices.get(id)
 
     def __str__(self) -> str:
         out = f"Vertices: { {v.id for v in self.vertices} }\n\n"
         arrow_head = ">" if self._dirigido else ""
-        for vertice in self.vertices:
-            for arista in vertice.aristas:
-                if arista.peso is not None:
-                    out += f"\t{vertice.id} --{arista.peso}--{arrow_head} {arista.destino.id}\n"
-                else:
-                    out += f"\t{vertice.id} --{arrow_head} {arista.destino.id}\n"
+        for arista in self.aristas:
+            if self._ponderado:
+                out += f"\t{arista.origen.id} --{arista.peso or 0}--{arrow_head} {arista.destino.id}\n"
+            else:
+                out += f"\t{arista.origen.id} --{arrow_head} {arista.destino.id}\n"
 
         return out
 
@@ -153,9 +154,8 @@ class Grafo:
 
         G = nx.DiGraph() if self._dirigido else nx.Graph()
 
-        for vertice_origen in self._vertices:
-            for arista in vertice_origen.aristas:
-                G.add_edge(vertice_origen.id, arista.destino.id, weight=arista.peso)
+        for arista in self.aristas:
+            G.add_edge(arista.origen.id, arista.destino.id, weight=arista.peso)
 
         return G
 
