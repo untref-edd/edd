@@ -179,10 +179,11 @@ class Grafo:
         import matplotlib.pyplot as plt
         import networkx as nx
 
-        if find_spec("pygraphviz"):
-            pos = pos or nx.nx_agraph.graphviz_layout(G)
-        else:
-            pos = pos or nx.circular_layout(G)
+        # if find_spec("pygraphviz"):
+        #     pos = pos or nx.nx_agraph.graphviz_layout(G)
+        # else:
+        #     pos = pos or nx.circular_layout(G)
+        pos = pos or nx.circular_layout(G)
 
         network_options = {
             "pos": pos,
@@ -226,17 +227,17 @@ class Grafo:
 
         if node_labels:
             node_labels_options = {
-                "pos": {v: (x + 0.12, y + 0.12) for v, (x, y) in pos.items()},
+                "pos": {v: (x + 0, y + 0.15) for v, (x, y) in pos.items()},
                 "labels": node_labels,
-                "font_size": 14,
+                "font_size": 12,
                 "font_family": "monospace",
                 "font_weight": "bold",
                 "font_color": "tab:green",
                 "bbox": {
-                    "boxstyle": "circle,pad=0.3",
                     "facecolor": "w",
                     "edgecolor": "none",
-                    "alpha": 0.75,
+                    "alpha": 0.8,
+                    "boxstyle": "round, pad=0.3",
                 },
             }
             nx.draw_networkx_labels(G, **node_labels_options)
