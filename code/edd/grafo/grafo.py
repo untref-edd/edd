@@ -42,6 +42,9 @@ class Vertice:
     def __repr__(self) -> str:
         return f"Vertice({repr(self._id)})"
 
+    def __str__(self) -> str:
+        return self._id
+
     def __lt__(self, other: Vertice) -> bool:
         """
         Se implementa para poder comparar vértices en un heap.
@@ -135,13 +138,13 @@ class Grafo:
         return self._vertices.get(id)
 
     def __str__(self) -> str:
-        out = f"Vertices: { {v.id for v in self.vertices} }\n\n"
+        out = f"Vertices: { {str(v) for v in self.vertices} }\n\n"
         arrow_head = ">" if self._dirigido else ""
         for arista in self.aristas:
             if self._ponderado:
-                out += f"\t{arista.origen.id} --{arista.peso or 0}--{arrow_head} {arista.destino.id}\n"
+                out += f"\t{arista.origen} --{arista.peso or 0}--{arrow_head} {arista.destino}\n"
             else:
-                out += f"\t{arista.origen.id} --{arrow_head} {arista.destino.id}\n"
+                out += f"\t{arista.origen} --{arrow_head} {arista.destino}\n"
 
         return out
 
