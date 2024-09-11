@@ -77,6 +77,15 @@ class Arista:
     def __contains__(self, vertice: Vertice) -> bool:
         return vertice in self.vertices
 
+    def __iter__(self):
+        """
+        Se implementa para poder desempaquetar la arista de la forma:
+
+        >>> arista = Arista(Vertice("A"), Vertice("B"), 10)
+        >>> origen, destino, peso = arista
+        """
+        return iter((self._origen, self._destino, self._peso))
+
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, Arista):
             return False
