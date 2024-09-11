@@ -1,9 +1,11 @@
 from __future__ import annotations
 
 from importlib.util import find_spec
+from math import inf
 from typing import Callable
 
 from ..cola import Cola
+from ..coladeprioridad import ColaDePrioridad
 
 
 class Vertice:
@@ -295,3 +297,28 @@ class DiGrafo(Grafo):
 
         if any(grado > 0 for grado in grado_entrada.values()):
             raise GrafoConCicloError("El grafo presenta un ciclo y no es posible definir un orden topológico")
+
+    def dijkstra(self, s: Vertice | str) -> tuple[dict[Vertice, float], dict[Vertice, Vertice | None]]:
+        s = self._vertices[str(s)]
+
+        pq: ColaDePrioridad = ColaDePrioridad()
+
+        distancia: dict[Vertice, float] = {v: inf for v in self.vertices}
+        previo: dict[Vertice, Vertice | None] = {v: None for v in self.vertices}
+        visitado: dict[Vertice, bool] = {v: False for v in self.vertices}
+
+        distancia[s] = 0
+        pq.encolar(s, distancia[s])
+
+        while not pq.esta_vacia():
+            v, _ = pq.desencolar_minimo()
+
+            visitado[v] = True
+
+            for _, w, peso_v_w in v.aristas:
+                if not visitado[w] and distancia[v] + peso_v_w < distancia[w]:
+                    distancia[w] = distancia[v] + peso_v_w
+                    previo[w] = v
+                    pq.encolar(w, distancia[w])
+
+        return distancia, previo
