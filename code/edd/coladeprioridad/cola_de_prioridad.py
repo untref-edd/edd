@@ -11,7 +11,7 @@ class ColaDePrioridad:
     def encolar(self, elemento, prioridad):
         heappush(self.__elementos, (prioridad, elemento))
 
-    def desencolar(self):
+    def desencolar_minimo(self):
         prioridad, elemento = heappop(self.__elementos)
 
         return elemento, prioridad
