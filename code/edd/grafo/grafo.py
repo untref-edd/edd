@@ -272,6 +272,10 @@ class GrafoConCicloError(Exception):
     pass
 
 
+class GrafoConCicloNegativoError(Exception):
+    pass
+
+
 class DiGrafo(Grafo):
     def __init__(self):
         super().__init__()
@@ -320,5 +324,25 @@ class DiGrafo(Grafo):
                     distancia[w] = distancia[v] + peso_v_w
                     previo[w] = v
                     pq.encolar(w, distancia[w])
+
+        return distancia, previo
+
+    def bellman_ford(self, s: Vertice | str) -> tuple[dict[Vertice, float], dict[Vertice, Vertice | None]]:
+        s = self._vertices[str(s)]
+
+        distancia: dict[Vertice, float] = {v: inf for v in self.vertices}
+        previo: dict[Vertice, Vertice | None] = {v: None for v in self.vertices}
+
+        distancia[s] = 0
+
+        for i in range(1, len(self.vertices)):
+            for v, w, peso_v_w in self.aristas:
+                if distancia[v] + peso_v_w < distancia[w]:
+                    distancia[w] = distancia[v] + peso_v_w
+                    previo[w] = v
+
+        for v, w, peso_v_wa in self.aristas:
+            if distancia[v] + peso_v_w < distancia[w]:
+                raise GrafoConCicloNegativoError("El grafo contiene un ciclo de peso negativo")
 
         return distancia, previo
