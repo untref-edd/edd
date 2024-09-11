@@ -1,1 +1,1 @@
-from .grafo import Arista, DiGrafo, Grafo, Vertice
+from .grafo import *

@@ -1,1 +1,1 @@
-from .cola_de_prioridad import ColaDePrioridad
+from .cola_de_prioridad import *

@@ -1,1 +1,1 @@
-from .cola import Cola
+from .cola import *
