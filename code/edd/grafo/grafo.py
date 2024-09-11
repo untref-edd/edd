@@ -1,6 +1,9 @@
 from __future__ import annotations
 
 from importlib.util import find_spec
+from typing import Callable
+
+from ..cola import Cola
 
 
 class Vertice:
@@ -263,7 +266,32 @@ class Grafo:
         plt.show()
 
 
+class GrafoConCicloError(Exception):
+    pass
+
+
 class DiGrafo(Grafo):
     def __init__(self):
         super().__init__()
         self._dirigido = True
+
+    def orden_topologico(self, visitar: Callable[[Vertice], None]) -> None:
+        q: Cola = Cola()
+
+        grado_entrada: dict[Vertice, int] = {v: v.grado_entrada for v in self.vertices}
+        for v, grado in grado_entrada.items():
+            if grado == 0:
+                q.encolar(v)
+
+        while not q.esta_vacia():
+            v = q.desencolar()
+
+            visitar(v)
+
+            for w in v.adyacentes:
+                grado_entrada[w] -= 1
+                if grado_entrada[w] == 0:
+                    q.encolar(w)
+
+        if any(grado > 0 for grado in grado_entrada.values()):
+            raise GrafoConCicloError("El grafo presenta un ciclo y no es posible definir un orden topológico")
