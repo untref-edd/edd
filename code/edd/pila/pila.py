@@ -1,15 +1,15 @@
 class Pila:
     def __init__(self):
-        self._elementos = []
+        self.__elementos = []
 
     def esta_vacia(self):
-        return len(self._elementos) == 0
+        return len(self.__elementos) == 0
 
     def apilar(self, elemento):
-        self._elementos += [elemento]
+        self.__elementos += [elemento]
 
     def desapilar(self):
-        *self._elementos, elemento = self._elementos
+        *self.__elementos, elemento = self.__elementos
 
         return elemento
 
