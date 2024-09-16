@@ -180,10 +180,12 @@ class Grafo:
         self,
         highlight_edges=None,
         highlight_nodes=None,
+        nodes_group=None,
         node_labels=None,
         output_file=None,
         pos=None,
         curved_edges=False,
+        layout="circular",
     ) -> None:
         import importlib.util
 
@@ -196,11 +198,19 @@ class Grafo:
         import matplotlib.pyplot as plt
         import networkx as nx
 
-        # if find_spec("pygraphviz"):
-        #     pos = pos or nx.nx_agraph.graphviz_layout(G)
-        # else:
-        #     pos = pos or nx.circular_layout(G)
-        pos = pos or nx.circular_layout(G)
+        label_offset = lambda x, y: (x + 0, y + 0.15)
+
+        if pos is None:
+            match layout, find_spec("pygraphviz") is not None:
+                case "graphviz", True:
+                    pos = nx.nx_agraph.graphviz_layout(G)
+                    label_offset = lambda x, y: (x + 0, y + 25)
+                case "circular", _:
+                    pos = nx.circular_layout(G)
+                    label_offset = lambda x, y: (x + 0, y + 0.15)
+                case _:
+                    pos = nx.circular_layout(G)
+                    label_offset = lambda x, y: (x + 0, y + 0.15)
 
         network_options = {
             "pos": pos,
@@ -208,6 +218,7 @@ class Grafo:
             "font_color": "w",
             "font_family": "monospace",
             "node_size": 1000,
+            "node_color": "tab:blue",
             "connectionstyle": "arc3, rad=-0.7" if curved_edges else "arc3",
         }
 
@@ -232,6 +243,15 @@ class Grafo:
 
         nx.draw_networkx(G, **network_options)
 
+        if nodes_group:
+            nodes_options = {
+                "pos": pos,
+                "node_size": 1000,
+                "node_color": "tab:green",
+                "nodelist": nodes_group,
+            }
+            nx.draw_networkx_nodes(G, **nodes_options)
+
         if self._ponderado:
             edge_labels_options = {
                 "pos": pos,
@@ -244,7 +264,7 @@ class Grafo:
 
         if node_labels:
             node_labels_options = {
-                "pos": {v: (x + 0, y + 0.15) for v, (x, y) in pos.items()},
+                "pos": {v: label_offset(x, y) for v, (x, y) in pos.items()},
                 "labels": node_labels,
                 "font_size": 12,
                 "font_family": "monospace",
