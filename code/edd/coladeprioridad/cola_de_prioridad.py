@@ -17,4 +17,4 @@ class ColaDePrioridad:
         return elemento, prioridad
 
     def __str__(self):
-        return f"< {repr(self.__elementos)} <"
+        return f"< [{", ".join(map(str, self.__elementos))}] <"
