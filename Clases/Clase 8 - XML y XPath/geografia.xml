@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<geografia>
+  <continentes>
+    <continente nombre="Europa">
+      <pais>España</pais>
+      <pais>Francia</pais>
+      <pais>Suiza</pais>
+    </continente>
+    <continente nombre="América">
+      <pais>Argentina</pais>
+      <pais>Jamaica</pais>
+      <pais>Uruguay</pais>
+    </continente>
+  </continentes>
+  <paises>
+    <pais nombre="España">
+      <sistema>monarquía</sistema>
+      <superficie>504645</superficie>
+      <moneda>euro</moneda>
+      <moneda antigua="antigua">peseta</moneda>
+      <idioma>español</idioma>
+    </pais>
+    <pais nombre="Francia">
+      <sistema>república</sistema>
+      <superficie>675417</superficie>
+      <moneda>euro</moneda>
+      <moneda antigua="antigua">franco francés</moneda>
+      <idioma>francés</idioma>
+    </pais>
+    <pais nombre="Suiza">
+      <sistema>república</sistema>
+      <superficie>41290</superficie>
+      <moneda>franco suizo</moneda>
+      <idioma>francés</idioma>
+    </pais>
+    <pais nombre="Uruguay">
+      <sistema>república</sistema>
+      <superficie>176215</superficie>
+      <moneda>peso uruguayo</moneda>
+      <idioma>español</idioma>
+    </pais>
+    <pais nombre="Argentina">
+      <sistema>república</sistema>
+      <superficie>2780400</superficie>
+      <moneda>peso argentino</moneda>
+      <idioma>español</idioma>
+    </pais>
+    <pais nombre="Jamaica">
+      <sistema>monarquía</sistema>
+      <superficie>10991</superficie>
+      <moneda>dólar jamaicano</moneda>
+      <idioma>inglés</idioma>
+    </pais>
+  </paises>
+  <rios>
+    <rio>
+      <nombre>Uruguay</nombre>
+      <pais>Argentina</pais>
+      <pais>Uruguay</pais>
+    </rio>
+  </rios>
+</geografia>

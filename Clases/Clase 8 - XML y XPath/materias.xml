@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Materias>
+  <Departamento Codigo="CS">
+    <Titulo>Computer Science</Titulo>
+    <Director>
+      <Profesor>
+        <Nombre>Jennifer</Nombre>
+        <Apellido>Widom</Apellido>
+      </Profesor>
+    </Director>
+    <Materia Numero="CS106A" Vacantes="1070">
+      <Titulo>Programming Methodology</Titulo>
+      <Descripcion>Introduction to the engineering of computer applications emphasizing modern software engineering principles.</Descripcion>
+      <Docentes>
+        <Ayudante>
+          <Nombre>Jerry</Nombre>
+          <Segundo_Nombre>R.</Segundo_Nombre>
+          <Apellido>Cain</Apellido>
+        </Ayudante>
+        <Profesor>
+          <Nombre>Eric</Nombre>
+          <Apellido>Roberts</Apellido>
+        </Profesor>
+        <Profesor>
+          <Nombre>Mehran</Nombre>
+          <Apellido>Sahami</Apellido>
+        </Profesor>
+      </Docentes>
+    </Materia>
+    <Materia Numero="CS106B" Vacantes="620">
+      <Titulo>Programming Abstractions</Titulo>
+      <Descripcion>Abstraction and its relation to programming.</Descripcion>
+      <Docentes>
+        <Profesor>
+          <Nombre>Eric</Nombre>
+          <Apellido>Roberts</Apellido>
+        </Profesor>
+        <Ayudante>
+          <Nombre>Jerry</Nombre>
+          <Segundo_Nombre>R.</Segundo_Nombre>
+          <Apellido>Cain</Apellido>
+        </Ayudante>
+      </Docentes>
+      <Correlativas>
+        <Corre>CS106A</Corre>
+      </Correlativas>
+    </Materia>
+    <Materia Numero="CS107" Vacantes="500">
+      <Titulo>Computer Organization and Systems</Titulo>
+      <Descripcion>Introduction to the fundamental concepts of computer systems.</Descripcion>
+      <Docentes>
+        <Ayudante>
+          <Nombre>Julie</Nombre>
+          <Apellido>Zelenski</Apellido>
+        </Ayudante>
+      </Docentes>
+      <Correlativas>
+        <Corre>CS106B</Corre>
+      </Correlativas>
+    </Materia>
+    <Materia Numero="CS109" Vacantes="280">
+      <Titulo>Introduction to Probability for Computer Scientists</Titulo>
+      <Docentes>
+        <Profesor>
+          <Nombre>Mehran</Nombre>
+          <Apellido>Sahami</Apellido>
+        </Profesor>
+      </Docentes>
+      <Correlativas>
+        <Corre>CS106B</Corre>
+      </Correlativas>
+    </Materia>
+    <Materia Numero="CS124" Vacantes="60">
+      <Titulo>From Languages to Information</Titulo>
+      <Descripcion>Natural language processing. Cross-listed as LING180.</Descripcion>
+      <Docentes>
+        <Profesor>
+          <Nombre>Dan</Nombre>
+          <Apellido>Jurafsky</Apellido>
+        </Profesor>
+      </Docentes>
+      <Correlativas>
+        <Corre>CS107</Corre>
+        <Corre>CS109</Corre>
+      </Correlativas>
+    </Materia>
+    <Materia Numero="CS143" Vacantes="90">
+      <Titulo>Compilers</Titulo>
+      <Descripcion>Principles and practices for design and implementation of compilers and interpreters.</Descripcion>
+      <Docentes>
+        <Profesor>
+          <Nombre>Alex</Nombre>
+          <Segundo_Nombre>S.</Segundo_Nombre>
+          <Apellido>Aiken</Apellido>
+        </Profesor>
+      </Docentes>
+      <Correlativas>
+        <Corre>CS107</Corre>
+      </Correlativas>
+    </Materia>
+    <Materia Numero="CS145" Vacantes="130">
+      <Titulo>Introduction to Databases</Titulo>
+      <Descripcion>Database design and use of database management systems for applications.</Descripcion>
+      <Docentes>
+        <Profesor>
+          <Nombre>Jennifer</Nombre>
+          <Apellido>Widom</Apellido>
+        </Profesor>
+      </Docentes>
+      <Correlativas>
+        <Corre>CS107</Corre>
+      </Correlativas>
+    </Materia>
+    <Materia Numero="CS221" Vacantes="180">
+      <Titulo>Artificial Intelligence: Principles and Techniques</Titulo>
+      <Docentes>
+        <Profesor>
+          <Nombre>Andrew</Nombre>
+          <Apellido>Ng</Apellido>
+        </Profesor>
+        <Profesor>
+          <Nombre>Sebastian</Nombre>
+          <Apellido>Thrun</Apellido>
+        </Profesor>
+      </Docentes>
+    </Materia>
+    <Materia Numero="CS228" Vacantes="110">
+      <Titulo>Structured Probabilistic Models: Principles and Techniques</Titulo>
+      <Descripcion>Using probabilistic modeling languages to represent complex domains.</Descripcion>
+      <Docentes>
+        <Profesor>
+          <Nombre>Daphne</Nombre>
+          <Apellido>Koller</Apellido>
+        </Profesor>
+      </Docentes>
+    </Materia>
+    <Materia Numero="CS229" Vacantes="320">
+      <Titulo>Machine Learning</Titulo>
+      <Descripcion>A broad introduction to machine learning and statistical pattern recognition.</Descripcion>
+      <Docentes>
+        <Profesor>
+          <Nombre>Andrew</Nombre>
+          <Apellido>Ng</Apellido>
+        </Profesor>
+      </Docentes>
+    </Materia>
+  </Departamento>
+  <Departamento Codigo="EE">
+    <Titulo>Electrical Engineering</Titulo>
+    <Director>
+      <Profesor>
+        <Nombre>Mark</Nombre>
+        <Segundo_Nombre>A.</Segundo_Nombre>
+        <Apellido>Horowitz</Apellido>
+      </Profesor>
+    </Director>
+    <Materia Numero="EE108A">
+      <Titulo>Digital Systems I</Titulo>
+      <Descripcion>Digital circuit, logic, and system design.</Descripcion>
+      <Docentes>
+        <Profesor>
+          <Nombre>Subhasish</Nombre>
+          <Apellido>Mitra</Apellido>
+        </Profesor>
+      </Docentes>
+    </Materia>
+    <Materia Numero="EE108B">
+      <Titulo>Digital Systems II</Titulo>
+      <Descripcion>The design of processor-based digital systems.</Descripcion>
+      <Docentes>
+        <Profesor>
+          <Nombre>William</Nombre>
+          <Segundo_Nombre>J.</Segundo_Nombre>
+          <Apellido>Dally</Apellido>
+        </Profesor>
+        <Profesor>
+          <Nombre>Oyekunle</Nombre>
+          <Apellido>Olukotun</Apellido>
+        </Profesor>
+      </Docentes>
+      <Correlativas>
+        <Corre>EE108A</Corre>
+        <Corre>CS106B</Corre>
+      </Correlativas>
+    </Materia>
+  </Departamento>
+  <Departamento Codigo="LING">
+    <Titulo>Linguistics</Titulo>
+    <Director>
+      <Profesor>
+        <Nombre>Beth</Nombre>
+        <Apellido>Levin</Apellido>
+      </Profesor>
+    </Director>
+    <Materia Numero="LING180" Vacantes="60">
+      <Titulo>From Languages to Information</Titulo>
+      <Descripcion>Natural language processing. Cross-listed as CS124.</Descripcion>
+      <Docentes>
+        <Profesor>
+          <Nombre>Dan</Nombre>
+          <Apellido>Jurafsky</Apellido>
+        </Profesor>
+      </Docentes>
+      <Correlativas>
+        <Corre>CS107</Corre>
+        <Corre>CS109</Corre>
+      </Correlativas>
+    </Materia>
+  </Departamento>
+</Materias>
