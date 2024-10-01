@@ -3,19 +3,31 @@
   <libro>
     <titulo>La vida está en otra parte</titulo>
     <autor>Milan Kundera</autor>
-    <fechaPublicacion año="1973"/>
+    <fechaPublicacion año="1973" />
     <precio>305.50</precio>
   </libro>
+  <revista>
+    <titulo>Computer Gaming World</titulo>
+    <editorial>Golden Empire Publications</editorial>
+    <fechaPublicacion año="1981" />
+    <precio>669.99</precio>
+  </revista>
   <libro>
     <titulo>Pantaleón y las visitadoras</titulo>
     <autor fechaNacimiento="28/03/1936">Mario Vargas Llosa</autor>
-    <fechaPublicacion año="1973"/>
+    <fechaPublicacion año="1973" />
     <precio>214.48</precio>
   </libro>
   <libro>
     <titulo>Conversación en la catedral</titulo>
     <autor fechaNacimiento="28/03/1936">Mario Vargas Llosa</autor>
-    <fechaPublicacion año="1969"/>
+    <fechaPublicacion año="1969" />
     <precio>541.78</precio>
   </libro>
+  <revista>
+    <titulo>PC Users</titulo>
+    <editorial>RedUsers</editorial>
+    <fechaPublicacion año="2000" />
+    <precio>220.50</precio>
+  </revista>
 </biblioteca>
