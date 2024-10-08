@@ -10,4 +10,5 @@ matplotlib
 mypy
 networkx
 pygraphviz
+requests
 scipy
