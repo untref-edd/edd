@@ -11,7 +11,7 @@ Instalar utilizando el siguiente comando y luego volver a ejecutar `make install
 
 ```sh
 pip install --config-settings="--global-option=build_ext" \
-            --config-settings="--global-option=-I$(brew --prefix graphviz)/include/" \
-            --config-settings="--global-option=-L$(brew --prefix graphviz)/lib/" \
-            pygraphviz
+    --config-settings="--global-option=-I$(brew --prefix graphviz)/include/" \
+    --config-settings="--global-option=-L$(brew --prefix graphviz)/lib/" \
+    pygraphviz
 ```
