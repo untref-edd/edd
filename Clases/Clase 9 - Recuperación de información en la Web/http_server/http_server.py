@@ -46,7 +46,6 @@ class RequestHandler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(response)
 
-
     def log_message(self, format, *args):
         logging.info(format % args)
 
