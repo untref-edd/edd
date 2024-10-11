@@ -101,7 +101,7 @@ class Arista:
         return hash((self._origen, self._destino, self._peso))
 
     def __repr__(self) -> str:
-        return f"Arista({repr(self.destino)}, {repr(self.destino)}, {repr(self.peso)})"
+        return f"Arista({repr(self.origen)}, {repr(self.destino)}, {repr(self.peso)})"
 
 
 class Grafo:
@@ -117,7 +117,7 @@ class Grafo:
 
     @property
     def aristas(self) -> set[Arista]:
-        return set(self._aristas)
+        return self._aristas
 
     @property
     def dirigido(self) -> bool:
@@ -361,7 +361,7 @@ class DiGrafo(Grafo):
                     distancia[w] = distancia[v] + peso_v_w
                     previo[w] = v
 
-        for v, w, peso_v_wa in self.aristas:
+        for v, w, peso_v_w in self.aristas:
             if distancia[v] + peso_v_w < distancia[w]:
                 raise GrafoConCicloNegativoError("El grafo contiene un ciclo de peso negativo")
 

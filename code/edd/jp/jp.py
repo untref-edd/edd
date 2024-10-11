@@ -10,11 +10,11 @@ def build_html_table(headers: list[str], rows: list[list[str]]) -> str:
     <table>
         <thead>
             <tr>
-                {"".join(f"<th>{header}</th>" for header in headers)}
+                {"".join(f'<th>{header}</th>' for header in headers)}
             </tr>
         </thead>
         <tbody>
-            {"".join(f"<tr>{"".join(f"<td>{cell}</td>" for cell in row)}</tr>" for row in rows)}
+            {"".join(f"<tr>{''.join(f'<td>{cell}</td>' for cell in row)}</tr>" for row in rows)}
         </tbody>
     </table>
     """

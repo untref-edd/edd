@@ -14,4 +14,4 @@ class Cola:
         return elemento
 
     def __str__(self):
-        return f"< [{", ".join(map(str, self.__elementos))}] <"
+        return f"< [{', '.join(map(str, self.__elementos))}] <"
