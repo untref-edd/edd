@@ -1,5 +1,5 @@
 <p style="text-align: center">
-    <img src="./assets/images/untref-logo-negro.svg" style="height: 50px;" />
+    <img src="../assets/images/untref-logo-negro.svg" style="height: 50px;" />
 </p>
 
 <h3 style="text-align: center">Estructuras de Datos</h3>
